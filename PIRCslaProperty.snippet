@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+			<Title>Define a PropertyInfoRegistration Csla ReadWrite Property</Title>
+			<Author>Rick Weyrauch</Author>
+			<Description>Define a PropertyInfoRegistration Csla ReadWrite property.</Description>
+			<Shortcut>pirprop</Shortcut>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal Editable="true">
+					<ID>PropertyName</ID>
+					<ToolTip>Replace with property name.</ToolTip>
+					<Default>Name</Default>
+				</Literal>
+				<Literal Editable="true">
+					<ID>PropertyType</ID>
+					<ToolTip>Replace with the property type.</ToolTip>
+					<Default>string</Default>
+				</Literal>
+				<Literal default="true" Editable="false">
+					<ID>classname</ID> 
+					<ToolTip>Class name</ToolTip> 
+					<Function>ClassName()</Function> 
+					<Default>ClassNamePlaceholder</Default> 
+			</Literal>
+			</Declarations>
+			<Code Language="csharp" Kind="method body"><![CDATA[public static readonly PropertyInfo<$PropertyType$> $PropertyName$Property =
+	PropertyInfoRegistration.Register<$classname$,$PropertyType$>(_ => _.$PropertyName$);
+public $PropertyType$ $PropertyName$
+{
+	get { return this.GetProperty($classname$.$PropertyName$Property); }
+	set { this.SetProperty($classname$.$PropertyName$Property, value); }
+}]]></Code>
+		</Snippet>
+	</CodeSnippet>
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+			<Title>Define a PropertyInfoRegistration Csla Read-Only Property</Title>
+			<Author>Jason Bock</Author>
+			<Description>Define a PropertyInfoRegistration Csla Read-Only property.</Description>
+			<Shortcut>pirroprop</Shortcut>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal Editable="true">
+					<ID>PropertyName</ID>
+					<ToolTip>Replace with property name.</ToolTip>
+					<Default>Name</Default>
+				</Literal>
+				<Literal Editable="true">
+					<ID>PropertyType</ID>
+					<ToolTip>Replace with the property type.</ToolTip>
+					<Default>string</Default>
+				</Literal>
+				<Literal default="true" Editable="false">
+					<ID>classname</ID>
+					<ToolTip>Class name</ToolTip>
+					<Function>ClassName()</Function>
+					<Default>ClassNamePlaceholder</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp" Kind="method body">
+				<![CDATA[public static readonly PropertyInfo<$PropertyType$> $PropertyName$Property =
+	PropertyInfoRegistration.Register<$classname$,$PropertyType$>(_ => _.$PropertyName$);
+public $PropertyType$ $PropertyName$
+{
+	get { return this.ReadProperty($classname$.$PropertyName$Property); }
+	private set { this.LoadProperty($classname$.$PropertyName$Property, value); }
+}]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
