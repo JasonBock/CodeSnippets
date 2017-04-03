@@ -5,10 +5,10 @@
 			<SnippetTypes>
 				<SnippetType>Expansion</SnippetType>
 			</SnippetTypes>
-			<Title>Define a PropertyInfoRegistration Csla ReadWrite Property</Title>
+			<Title>Define a PropertyInfo Csla ReadWrite Property</Title>
 			<Author>Jason Bock</Author>
-			<Description>Define a PropertyInfoRegistration Csla ReadWrite property.</Description>
-			<Shortcut>pirprop</Shortcut>
+			<Description>Define a PropertyInfo Csla ReadWrite property.</Description>
+			<Shortcut>CSLA-Property</Shortcut>
 		</Header>
 		<Snippet>
 			<Declarations>
@@ -30,11 +30,11 @@
 			</Literal>
 			</Declarations>
 			<Code Language="csharp" Kind="method body"><![CDATA[public static readonly PropertyInfo<$PropertyType$> $PropertyName$Property =
-	PropertyInfoRegistration.Register<$classname$,$PropertyType$>(_ => _.$PropertyName$);
+	RegisterProperty<$PropertyType$>(_ => _.$PropertyName$);
 public $PropertyType$ $PropertyName$
 {
-	get { return this.GetProperty($classname$.$PropertyName$Property); }
-	set { this.SetProperty($classname$.$PropertyName$Property, value); }
+	get { return GetProperty($PropertyName$Property); }
+	set { SetProperty($PropertyName$Property, value); }
 }]]></Code>
 		</Snippet>
 	</CodeSnippet>
@@ -43,10 +43,10 @@ public $PropertyType$ $PropertyName$
 			<SnippetTypes>
 				<SnippetType>Expansion</SnippetType>
 			</SnippetTypes>
-			<Title>Define a PropertyInfoRegistration Csla Read-Only Property</Title>
+			<Title>Define a PropertyInfo Csla Read-Only Property</Title>
 			<Author>Jason Bock</Author>
-			<Description>Define a PropertyInfoRegistration Csla Read-Only property.</Description>
-			<Shortcut>pirroprop</Shortcut>
+			<Description>Define a PropertyInfo Csla Read-Only property.</Description>
+			<Shortcut>CSLA-ReadOnlyProperty</Shortcut>
 		</Header>
 		<Snippet>
 			<Declarations>
@@ -69,11 +69,11 @@ public $PropertyType$ $PropertyName$
 			</Declarations>
 			<Code Language="csharp" Kind="method body">
 				<![CDATA[public static readonly PropertyInfo<$PropertyType$> $PropertyName$Property =
-	PropertyInfoRegistration.Register<$classname$,$PropertyType$>(_ => _.$PropertyName$);
+	RegisterProperty<$PropertyType$>(_ => _.$PropertyName$);
 public $PropertyType$ $PropertyName$
 {
-	get { return this.ReadProperty($classname$.$PropertyName$Property); }
-	private set { this.LoadProperty($classname$.$PropertyName$Property, value); }
+	get { return ReadProperty($PropertyName$Property); }
+	private set { LoadProperty($PropertyName$Property, value); }
 }]]>
 			</Code>
 		</Snippet>

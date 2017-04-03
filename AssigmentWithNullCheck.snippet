@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+			<Title>Create code to assign a paramter with a null check</Title>
+			<Author>Jason Bock</Author>
+			<Shortcut>AssigmentWithNullCheck</Shortcut>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal Editable="true">
+					<ID>ParameterName</ID>
+					<ToolTip>Replace with parameter name.</ToolTip>
+					<Default>argument</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp" Kind="method body"><![CDATA[$ParameterName$ ?? throw new ArgumentNullException(nameof($ParameterName$));]]></Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
